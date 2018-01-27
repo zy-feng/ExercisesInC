@@ -96,7 +96,7 @@ in the habit if compiling and testing often.
 Look up what these flags do.  Did you get additional warnings?  See if
 you can get your program to compile cleanly with these flags.
 
-​	*Response*: The program complains that 
+​	*Response*: Type `make flags` in the current directory. The program complains that 
 
 ```
 cards.c: In function ‘main’:
@@ -105,9 +105,11 @@ cards.c:64:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaratio
      ^
 ```
 
-​	To solve it, 
+​	To solve it, we modify the codes around line 64. The flags ask the compiler to strictly follow ANSI standards, restrict any exceptions and print all warning information.
 
 9.  Check your modified program into the repo.
+
+    *Response*: Any modifications are available in the repo.
 
 ### Optimization
 

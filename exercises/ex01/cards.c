@@ -58,10 +58,11 @@ int main()
 {
   char card_name[3];
   int count = 0;
+  int val;
   while ( card_name[0] != 'X') {
     puts("Enter the card_name: ");
     scanf("%2s", card_name);
-    int val = translate(card_name);
+    val = translate(card_name);
     if (val == -1) continue;
     update(&count, val);
     printf("Current count: %i\n", count);
