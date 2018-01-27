@@ -8,9 +8,15 @@
 
 1) Give an example of a feature common in interpreted languages that is rare in compiled languages.
 
+*Answer:* 
+
 2) Name two advantages of static typing over dynamic typing.
 
+*Answer:* Initialization is an insurance that prevents misspelling from falsely accepted by the compiler, like `varaible=variable+1` is accepted by dynamic typing but often wrong for programmers. Also, the compiler does not need to spend too much time on the deduction of the vairable types.
+
 3) Give an example of a static semantic error.
+
+*Answer:* 
 
 4) What are two reasons you might want to turn off code optimization?
 
