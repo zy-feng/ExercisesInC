@@ -3,6 +3,7 @@
 * This code is released under the Vegas Public License.
 * (c)2018, originated by Head First C for educational
 * purpose, modified by Zhengyang Fengs
+* For comments see README.md
 */
 
 #include <stdio.h>

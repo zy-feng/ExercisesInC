@@ -124,10 +124,20 @@ Compile and look at the assembly language output (see [this section of
 *Think OS*](http://greenteapress.com/thinkos/html/thinkos002.html#toc8).
 Can you find the code that corresponds to this line?
 
+​	*Response*: Type `make assembly` in the current directory. This line corresponds to 
+
+```assembly
+movl	$5, -4(%rbp)
+```
+
 2. What happens if you turn on optimization using the flag `-O2`?
+
+     *Response*: The `hello.s` file is even longer. But the main function is shorter.
 
 3. Modify the `printf` statement to print `x`, then compile it with and
      without optimization.  What effect does it have when you print `x`?
+
+     *Response*: The `hello.s` file is still longer, and it is even longer than before. The optimization separates the main functions into several parts, which are expected to optimize the program.
 
 4. Add
 
@@ -140,5 +150,9 @@ optimization.  What happens to `x` and `y`?
 
 What conclusions can you draw about how optimization works?
 
+​	*Response*: The `hello.s` file is now of equal length before and after the optimization, but main function is shorter after. The optimized program uses tricks like `xorl` to make the calculation faster. Also, functions like `__printf_chk` are applied instead of `printf`. It is highly possible that the former one uses faster strategy for output but unsafe for general cases.  
+
 5. Add comments to the code to explain these experiments and the results,
      then check in the final version.
+
+     *Response*: All comments are available in this README file, and the repo has been updated.
