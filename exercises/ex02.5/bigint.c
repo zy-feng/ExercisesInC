@@ -23,7 +23,7 @@ Follow these steps to get this program working:
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
-
+#include <ctype.h>
 /* reverse_string: Returns a new string with the characters reversed.
 
 It is the caller's responsibility to free the result.
@@ -33,7 +33,14 @@ returns: string
 */
 char *reverse_string(char *s) {
     //TODO: Fill this in.
-    return "";
+    //return "";
+	int l = strlen(s);
+	char* ret = malloc(l+1);
+	int x = 0;
+	while(x <= l){
+		ret[x++] = s[l-x];
+	}
+	return ret;
 }
 
 /* ctoi: Converts a character to integer.
@@ -53,7 +60,8 @@ returns: character '0' to '9'
 */
 char itoc(int i) {
     //TODO: Fill this in, with an appropriate assertion.
-    return '0';
+    	assert(0<=i); assert(i<=9);
+	return i+'0';
 }
 
 /* add_digits: Adds two decimal digits, returns the total and carry.
@@ -70,6 +78,11 @@ carry: pointer to char
 */
 void add_digits(char a, char b, char c, char *total, char *carry) {
     //TODO: Fill this in.
+	int res = ctoi(a)+ctoi(b)+ctoi(c);
+	int cb = 0;
+	while (res >= 10) {res-=10; cb++;}
+	*carry = itoc(cb);
+	*total = itoc(res);
 }
 
 /* Define a type to represent a BigInt.
@@ -155,7 +168,7 @@ void test_reverse_string() {
     if (strcmp(t, "321") == 0) {
         printf("reverse_string passed\n");
     } else {
-        printf("reverse_string failed\n");
+        printf("reverse_string failed\n%s\n", t);
     }
 }
 
@@ -204,6 +217,6 @@ int main (int argc, char *argv[])
 
     //TODO: When you have the first three functions working,
     //      uncomment the following, and it should work.
-    // test_add_bigint();
+    test_add_bigint();
     return 0;
 }
