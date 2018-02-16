@@ -5,7 +5,7 @@
 Modify the link below so it points to the `ex02` directory in your
 student repository.
 
-[Here is a link to the ex01 directory in my repository](https://github.com/zy-feng/ExercisesInC/tree/master/exercises/ex02)
+[Here is a link to the ex02 directory in my repository](https://github.com/zy-feng/ExercisesInC/tree/master/exercises/ex02)
 
 ### Think OS Chapter 2 reading questions
 
@@ -13,8 +13,8 @@ For each of the reading questions below, write answers in the form of
 a clear, concise, complete sentence or two.
 
 1. Give a real-world example of virtualization (ideally not one of 
-  the ones in the book).  What is abstractly true about the system that
-  is not literally true about the implementation?
+     the ones in the book).  What is abstractly true about the system that
+       is not literally true about the implementation?
 
   *Response:* When we run things in the computer, there is virtualization that all the programs(processes) are running at the same time. Actually, it's not. Only one thread can run in one core, and there are scheduling algorithms adjusting theirpriorities. 
 
