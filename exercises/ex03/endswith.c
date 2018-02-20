@@ -29,8 +29,6 @@ int endswith(char *s, char *suffix)
 {
 	char* x = strstr(s,suffix);
 	return x && x+strlen(suffix)==s+strlen(s);
-    // TODO: Fill this in!
-    //return 0;
 }
 
 
@@ -47,8 +45,7 @@ int main (int argc, char *argv[])
     test_endswith("endswith", "swith", 1);
     test_endswith("endswith", "ends", 0);
     test_endswith("endswith", "offendswith", 0);
-    // what's the right answer?
-    // test_endswith("endswith", "", ?);
+    test_endswith("endswith", "", 0);
 
     printf("All tests passed\n");
 }
