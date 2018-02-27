@@ -33,6 +33,17 @@ returns: new array, caller must free
 */
 // TODO: Write this function
 
+double* get_int_part(double* orig, int length)
+{
+	int i;	
+	double* ret = malloc(sizeof(double)*length);
+	for(i=0;i<length;i++){
+		modf(orig[i],&ret[i]);
+	} 
+	return ret;
+}
+
+
 void test_get_int_part()
 {
     double array[] = {1.2, 2.718, 3.1412, 5.6};
@@ -58,7 +69,7 @@ returns: new array, caller must free
 */
 //TODO: Write this function
 
-
+/*
 void test_get_both_parts()
 {
     double array[] = {1.2, 2.718, 3.14159, 5.6};
@@ -76,10 +87,10 @@ void test_get_both_parts()
         assert(frac_part[i] == expected_frac[i]);
     }
 }
-
+*/
 int main (int argc, char *argv[])
 {
     test_get_int_part();
-    test_get_both_parts();
+    //test_get_both_parts();
     printf("All tests passed\n");
 }
