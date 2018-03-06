@@ -5,7 +5,7 @@
 Modify the link below so it points to the `ex05` directory in your
 student repository.
 
-[Here is a link to the ex05 directory in my repository](https://github.com/YOUR_GITHUB_USERNAME_HERE/ExercisesInC/tree/master/exercises/ex05)
+[Here is a link to the ex05 directory in my repository](https://github.com/zy-feng/ExercisesInC/tree/master/exercises/ex05)
 
 ### Think OS Chapter 5 reading questions
 
@@ -17,7 +17,7 @@ it to a 16-bit number and accidentally apply sign extension?
 2) Write a C expression that computes the two's complement of 12 using the XOR bitwise operator. 
 Try it out and confirm that the result is interpreted as -12.
 
-3) Can you guess why IEEE floating-point uses biased integers to represent the exponent rather than a
+3) Can you guess why IEE	E floating-point uses biased integers to represent the exponent rather than a
 sign bit or two's complement?
 
 4) Following the example in Section 5.3, write the 32-bit binary representation of -13 in single precision 
