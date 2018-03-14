@@ -26,11 +26,11 @@ uint32_t get_exponent(float x) {
 */
 float div_by_pow_2(float x, int n)
 {
-    // TODO: fill this in
-    return x;
+    b.f = x; b.i-=n<<23;
+    return b.f;
 }
 
 void main() {
-    float y = div_by_pow_2(4.82, 1);
+    float y = div_by_pow_2(4.82, 3);
     printf("%f\n", y);
 }
