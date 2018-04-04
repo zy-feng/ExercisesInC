@@ -54,10 +54,17 @@ void print_matrix(Matrix *matrix) {
     }
 }
 
+int cmp(const void* a, const void* b){
+    return *(double*)b - *(double*)a;
+}
+
 /* Sort rows in descending order by first element.
 */
 void sort_matrix_rows(Matrix *matrix) {
-    // TODO: Write this function
+
+    for (int j = 0; j < matrix->num_rows; j++) {
+        qsort(matrix->rows[j], matrix->num_cols, sizeof(double), cmp);
+    }
 }
 
 /* Perform row reduction.
