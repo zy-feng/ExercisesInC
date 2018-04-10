@@ -19,6 +19,7 @@ License: MIT License https://opensource.org/licenses/MIT
 // error information
 extern int errno;
 
+int global;
 
 // get_seconds returns the number of seconds since the
 // beginning of the day, with microsecond precision
@@ -32,8 +33,14 @@ double get_seconds() {
 
 void child_code(int i)
 {
-    // sleep(i);
+    sleep(i);
     printf("Hello from child %d.\n", i);
+    printf("global %p\n", &global);
+    int stack;
+    printf("stack %p\n", &stack);
+    int *heap = malloc(sizeof(int));
+    printf("heap %p\n", heap);
+    // yes they share the same things as all the printfs give the same res
 }
 
 // main takes two parameters: argc is the number of command-line
