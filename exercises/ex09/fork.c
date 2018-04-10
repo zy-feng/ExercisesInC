@@ -32,7 +32,7 @@ double get_seconds() {
 
 void child_code(int i)
 {
-    sleep(i);
+    // sleep(i);
     printf("Hello from child %d.\n", i);
 }
 
