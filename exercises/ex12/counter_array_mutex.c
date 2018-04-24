@@ -89,6 +89,7 @@ void child_code(Shared *shared)
     }
     mutex_unlock(shared->mutex);
 }
+}
 
 void *entry(void *arg)
 {
