@@ -49,9 +49,11 @@ void accumulator(gpointer key, gpointer value, gpointer user_data)
 {
     GSequence *seq = (GSequence *) user_data;
     Pair *pair = g_new(Pair, 1);
-    pair->word = (gchar *) key;
+    //pair->word = (gchar *) key;
+    gchar* key_cp = g_strdup(key);
+    pair->word = (gchar*) key_cp;
     pair->freq = *(gint *) value;
-
+    
     g_sequence_insert_sorted(seq,
         (gpointer) pair,
         (GCompareDataFunc) compare_pair,
@@ -66,12 +68,19 @@ void incr(GHashTable* hash, gchar *key)
     if (val == NULL) {
         gint *val1 = g_new(gint, 1);
         *val1 = 1;
-        g_hash_table_insert(hash, key, val1);
+	gchar* key_cp = g_strdup(key);
+        g_hash_table_insert(hash, key_cp, val1);
     } else {
         *val += 1;
     }
 }
-
+void free_key(gpointer key) { g_free(key); }
+void free_value (gpointer value) { g_free(value);}
+void free_iteration (gpointer pair) {
+	Pair* pair_ = (Pair*) pair;
+	g_free((gpointer)pair_->word);
+	g_free(pair);
+}
 int main(int argc, char** argv)
 {
     gchar *filename;
@@ -93,7 +102,7 @@ int main(int argc, char** argv)
     (one-L) NUL terminated strings */
     gchar **array;
     gchar line[128];
-    GHashTable* hash = g_hash_table_new(g_str_hash, g_str_equal);
+    GHashTable* hash = g_hash_table_new_full(g_str_hash, g_str_equal,free_key, free_value);
 
     // read lines from the file and build the hash table
     while (1) {
@@ -104,6 +113,7 @@ int main(int argc, char** argv)
         for (int i=0; array[i] != NULL; i++) {
             incr(hash, array[i]);
         }
+        g_strfreev(array);
     }
     fclose(fp);
 
@@ -111,7 +121,7 @@ int main(int argc, char** argv)
     // g_hash_table_foreach(hash, (GHFunc) kv_printor, "Word %s freq %d\n");
 
     // iterate the hash table and build the sequence
-    GSequence *seq = g_sequence_new(NULL);
+    GSequence *seq = g_sequence_new(free_iteration);
     g_hash_table_foreach(hash, (GHFunc) accumulator, (gpointer) seq);
 
     // iterate the sequence and print the pairs
@@ -120,6 +130,5 @@ int main(int argc, char** argv)
     // try (unsuccessfully) to free everything
     g_hash_table_destroy(hash);
     g_sequence_free(seq);
-
     return 0;
 }

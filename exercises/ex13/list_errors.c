@@ -113,6 +113,16 @@ int remove_by_value(Node **list, int val) {
     return 0;
 }
 
+/* Free everything
+*/
+void free_nodes(Node *head){
+	while(head){
+		Node* victim = head;
+		head = head->next;
+		free(victim);	
+	}
+}
+
 /* Reverses the elements of the list.
 *
 * Does not allocate or free nodes.
@@ -209,7 +219,8 @@ int main() {
     print_list(&empty);
 
     Node *something = make_something();
-    free(something);
-
+    free_nodes(something);
+    free_nodes(test_list);
+    free_nodes(empty);
     return 0;
 }
